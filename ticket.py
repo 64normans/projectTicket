@@ -45,39 +45,36 @@ while True:
         elif command.lower() == "e":
             print(
                 "Current number is shown in the (). Key in the new value to edit it or just press Enter to ignore editing it.")
-            while True:
-                try:
-                    while True:
-                        noAdult = int(input("No. of adult (" + str(noAdult) + "): "))
-                        if noAdult >= 0:
-                            break
-                        else:
-                            print("Please enter 0 or positive integer")
-                    while True:
-                        noChild = int(input("No. of child (" + str(noChild) + "): "))
-                        if noChild >= 0:
-                            break
-                        else:
-                            print("Please enter 0 or positive integer")
-                    while True:
-                        noSenior = int(input("No. of senior (" + str(noSenior) + "): "))
-                        if noSenior >= 0:
-                            break
-                        else:
-                            print("Please enter 0 or positive integer")
-                    while True:
-                        date = int(input("Date of the show (0: Sat, 1: Wed): "))
-                        if date == 0 or date == 1:
-                            break
-                        else:
-                            print("Please enter 0 or 1")
-                    totalNo = noAdult + noChild + noSenior
-                    if totalNo <= wedSeats or totalNo <= satSeats:
+            while noAdult != "" or noChild != "" or noSenior != "" or date != "":
+                while True:
+                    noAdult = int(input("No. of adult (" + str(noAdult) + "): "))
+                    if noAdult >= 0:
                         break
                     else:
-                        print("No. of tickets exceed current available tickets, please enter again.")
-                except ValueError:
-                    print("Please enter a valid number")
+                        print("Please enter 0 or positive integer")
+                while True:
+                    noChild = int(input("No. of child (" + str(noChild) + "): "))
+                    if noChild >= 0:
+                        break
+                    else:
+                        print("Please enter 0 or positive integer")
+                while True:
+                    noSenior = int(input("No. of senior (" + str(noSenior) + "): "))
+                    if noSenior >= 0:
+                        break
+                    else:
+                        print("Please enter 0 or positive integer")
+                while True:
+                    date = int(input("Date of the show (0: Sat, 1: Wed): "))
+                    if date == 0 or date == 1:
+                        break
+                    else:
+                        print("Please enter 0 or 1")
+                totalNo = noAdult + noChild + noSenior
+                if totalNo <= wedSeats or totalNo <= satSeats:
+                    break
+                else:
+                    print("No. of tickets exceed current available tickets, please enter again.")
         elif command.lower() == "f":
             while satSeats>0 or wedSeats>0:
                 combo = 0
@@ -139,4 +136,7 @@ while True:
         else:
             print("Please enter valid input")
     except ValueError:
-        print("Please enter valid input")
+        if noAdult == "" or noChild == "" or noSenior == "" or date == "":
+            print("Skipped with enter")
+        else:
+            print("Please enter valid input")
